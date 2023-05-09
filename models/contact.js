@@ -39,6 +39,7 @@ const updateFavoritMovie = Joi.object({
     "any.required": `missing field favorite`,
   }),
 });
+
 const Contact = model("contact", contactSchema);
 const schemas = {
   contactAddSchema,
