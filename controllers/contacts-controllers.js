@@ -5,7 +5,7 @@ const getAll = async (req, res) => {
   const { _id: owner } = req.user;
   const { page = 1, limit = 10, favorite } = req.query;
   const skip = (page - 1) * limit;
-  console.log("favorite", favorite);
+
   if (favorite) {
     const result = await Contact.find(
       { owner, favorite },
@@ -34,10 +34,8 @@ const getById = async (req, res) => {
 };
 
 const addContact = async (req, res) => {
-  // console.log("req.user", req.user);
-  // console.log("req.user._id", req.user._id);
   const { _id: owner } = req.user;
-  // console.log("owner", owner);
+
   const result = await Contact.create({ ...req.body, owner });
   res.status(201).json(result);
 };
