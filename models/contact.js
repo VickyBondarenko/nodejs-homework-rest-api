@@ -18,6 +18,10 @@ const contactSchema = new Schema(
       type: Boolean,
       default: false,
     },
+    owner: {
+      type: Schema.Types.ObjectId,
+      ref: "user",
+    },
   },
   { versionKey: false, timestamps: true }
 );
@@ -39,6 +43,7 @@ const updateFavoritMovie = Joi.object({
     "any.required": `missing field favorite`,
   }),
 });
+
 const Contact = model("contact", contactSchema);
 const schemas = {
   contactAddSchema,
